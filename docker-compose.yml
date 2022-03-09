@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  twitter_scraper:
+    build:
+     context: ./
+     dockerfile: Dockerfile
+    volumes:
+      - $PWD:/code 
+  redis_alp:
+    image: "redis:alpine"
