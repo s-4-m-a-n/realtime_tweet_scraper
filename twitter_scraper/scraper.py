@@ -1,5 +1,5 @@
 import tweepy
-from twitter_scraper.client import get_client
+from client import get_client
 import re
 import hashlib
 
@@ -49,10 +49,12 @@ def get_tweets(client,query="hello", max_results=10):
     response = {}
     if tweets.data:
         for tweet in tweets[0]:
-            if "@" in tweet.text or has_url(tweet.text) or len(tweet.text) < 5: #discard tweet that has mentions and urls
+            if "@" in tweet.text or has_url(tweet.text) or len(tweet.text) < 10: #discard tweet that has mentions and urls
                 continue;
             parsed_text = parse_text(tweet.text)
             tweet_text = normalize_text(parsed_text["text"])
+            if len(tweet_text) < 10:
+            	continue;
             tweet_hash = hash_fn(tweet_text)
             response[tweet_hash] = {"text":tweet_text,"tags":parsed_text["tags"]}      
     return response

@@ -1,11 +1,11 @@
-from twitter_scraper import client
-from twitter_scraper.scraper import get_tweets
-from twitter_scraper.json_handler import save_json
+import client
+from scraper import get_tweets
+from json_handler import save_json
 
 #config--------------------------
 JSON_FILE = "tweets repo/tweets.json"
 
-def run(query="#motivationalquotes",max_results=10):
+def run(query="#motivationalquotes",max_results=50):
 	#get tweety client 
 	c = client.get_client()
 	
