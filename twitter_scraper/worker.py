@@ -2,10 +2,13 @@ import client
 from scraper import get_tweets
 from json_handler import save_json
 
-#config--------------------------
-JSON_FILE = "tweets repo/tweets.json"
 
-def run(query="#motivationalquotes",max_results=50):
+
+
+def run(query="#quotes",max_results=50):
+	# config 
+	JSON_FILE = f"tweets repo/{query[1:]}.json"
+	
 	#get tweety client 
 	c = client.get_client()
 	
